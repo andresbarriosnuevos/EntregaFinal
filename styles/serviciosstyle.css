@@ -1,0 +1,66 @@
+body {
+    background-image: rgb(255, 255, 255) !important;
+}
+
+
+.fondo{
+    background-color: rgb(245, 245, 245);
+}
+
+.seccion{
+    background-color: rgb(204, 204, 204);
+}
+
+.seccionb{
+    background-color: rgb(173, 216, 230);
+}
+
+
+.img-logo {
+    max-height: 100px;
+}
+
+.img-footer {
+    max-height: 35px;
+}
+
+.footer-logo {
+    max-height: 200px;
+}
+
+.navbar{
+    background-image: rgb(255, 255, 255);
+}
+
+.navbar-nav .nav-link {
+    font-size: 20px;
+    color: rgb(0, 102, 102);
+}
+
+.container h2 {
+    color: rgb(0, 102, 102);
+    text-align: center;
+}
+
+
+p {
+    text-align: justify;
+}
+
+footer ul li{
+    list-style-type: none;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+footer{
+    background-color: rgb(85, 85, 85);
+}
+
+.formulario{
+    background-color: antiquewhite;
+
+}
