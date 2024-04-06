@@ -1,73 +1,81 @@
 <?php
-//include('usuario/database.php');
 include('usuario/usuario.php');
 include_once('config/functions.php');
 
-$mensaje = ''; 
 
+$mensaje = '';
 
+$u = new Usuario();
+
+$du = mysqli_fetch_object($u->getOne($_GET['id']));
+var_dump($_POST);
 
 if (!empty($_POST)) {
-     
-    $u = new Usuario();
-    
-    if ($_FILES['imagen']['name'] !== '') {
+    $_POST['imagen'] = $du->imagen;
+    var_dump($_FILES);
+    if ( $_FILES['imagen']['name'] !== '' ) {
         $_POST['imagen'] = saveImages($_FILES);
-    
     }
-
-    $save = $u->save($_POST);
     
-    if ($save) {
-        $mensaje = '<div class="alert alert-success"> Sesión registrada </div>';
-    } else {
-        $mensaje = '<div class="alert alert-danger"> Error al registrar </div>';
-    }
-
-
-
-} else {
-    $mensaje = '<div class="alert alert-danger"> No se han enviado datos </div>';
+    $update = $u->update($_POST);
+    if($update){
+        $mensaje = '<div class="alert alert-success" role="alert" >Usuario actualizado correctamente</div>';
+        header("Location: usuarios.php?mensaje=" . urlencode("Usuario actualizado correctamente"));
+    }else{
+        $mensaje = '<div class="alert alert-danger" role="alert" >Error</div>';
+        
+    } 
 }
 
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuarios</title>
+    <title>Modificar Usuarios</title>
     <link rel="stylesheet" href="./styles/serviciosstyle.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
+
     
+
     <!--Barra de navegación -->
     <?php include 'templates/navbar.php'; ?>
 
     <div class="container" style="background-color: whitesmoke; max-width: 800px; padding-bottom: 1px;">
         <br>
-        <h1 class="text-center" style="color: rgb(0, 102, 102);"> Registrar Usuario </h1>
+        <h1 class="text-center" style="color: rgb(0, 102, 102);"> Modificar Usuario </h1>
+      
     </div>
 
-    <!-- Cuerpo de la página -->
+    <!-- Mostrar mensaje de error si existe -->
+    <?php echo $mensaje; ?>
+
+    <!-- Mostrar el formulario si se encontró un usuario con el ID proporcionado -->
+    <?php 
+    //if(isset($du)) {
+    //    include 'templates/form.php';
+    //}
+    ?>
+
     <!-- Formulario -->
     <div class="container" style="background-color: whitesmoke; max-width: 800px;">
         <br>
         <br>
-        <form method="post" enctype="multipart/form-data" >
+
+
+        <form method="post" enctype="multipart/form-data">
             <div class="row mb-3" style="padding-left: 80px; padding-right: 80px;">
                 <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
                 <input type="text" class="form-control" name="nombre" id="nombre" value="<?= isset($du) ? $du->nombre : '' ?>"  >
                 </div>
-                <input type="hidden" name="id" id="id" value="<?= isset($du) ? $du->id : '' ?>">
+                <input type="hidden" name="id" id="id" value="<?= isset($du) ? $du->ID : '' ?>">
             </div>
 
             <div class="row mb-3" style="padding-left: 80px; padding-right: 80px;">
@@ -141,11 +149,10 @@ if (!empty($_POST)) {
         </form>
 
     </div>
-    
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 </body>
+
 
 <footer class="py-4 text-light ">
     <div class="container">

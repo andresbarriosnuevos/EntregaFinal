@@ -15,4 +15,15 @@ function getFolderProyect(){
 }
 
 
+function saveImages($file){
+    $imageName = str_replace(' ','', $file['imagen']['name']);
+    $imgTmp = $file['imagen']['tmp_name'];
+
+    move_uploaded_file($imgTmp, $_SERVER['DOCUMENT_ROOT'].getFolderProyect().'/images/'.$imageName);
+    return $imageName;
+
+}
+
+
+
 ?>
