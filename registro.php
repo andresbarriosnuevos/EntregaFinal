@@ -1,6 +1,8 @@
 <?php
 //include('usuario/database.php');
-include('usuario/usuario.php');
+if (!class_exists('Usuario')) {
+    include('./usuario/usuario.php');
+}
 include_once('config/functions.php');
 
 $mensaje = ''; 
@@ -42,6 +44,7 @@ if (!empty($_POST)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuarios</title>
     <link rel="stylesheet" href="./styles/serviciosstyle.css">
+    <link rel="stylesheet" href="./styles/styles.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -51,6 +54,30 @@ if (!empty($_POST)) {
     <!--Barra de navegación -->
     <?php include 'templates/navbar.php'; ?>
 
+    <!-- Imagen superior -->
+    <img src="./images/banner.png" class="img-fluid" alt="Banner de la naturaleza">
+
+    <div class="d-flex justify-content-center">
+        <div class="card mb-4 " style="max-width: 800px; margin: 20px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="./images/iniciar1.png" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+                        <h5 class="card-title text-center" style="color: rgb(0, 102, 102);">
+                            <a href="iniciarSesion.php">INICIA SESIÓN</a> SI YA TIENES UN REGISTRO
+                        </h5>
+                        <br>
+                        <p class="card-text text-center">Debes registrarte para poder iniciar una solicitud. Por favor llena el siguiente formulario y disfruta de nuestros beneficios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container" style="background-color: whitesmoke; max-width: 800px; padding-bottom: 1px;">
         <br>
         <h1 class="text-center" style="color: rgb(0, 102, 102);"> Registrar Usuario </h1>
@@ -58,7 +85,7 @@ if (!empty($_POST)) {
 
     <!-- Cuerpo de la página -->
     <!-- Formulario -->
-    <div class="container" style="background-color: whitesmoke; max-width: 800px;">
+    <div class="container mb-4" style="background-color: whitesmoke; max-width: 800px;">
         <br>
         <br>
         <form method="post" enctype="multipart/form-data" >
@@ -81,6 +108,13 @@ if (!empty($_POST)) {
                 <label for="inputUsuario" class="col-sm-2 col-form-label">Usuario</label>
                 <div class="col-sm-10">
                 <input type="text" class="form-control" name="usuario" id="usuario" value="<?= isset($du) ? $du->usuario : '' ?>" >
+                </div>
+            </div>
+
+            <div class="row mb-3" style="padding-left: 80px; padding-right: 80px;">
+                <label for="inputContrasena" class="col-sm-2 col-form-label">Contraseña</label>
+                <div class="col-sm-10">
+                <input type="password" class="form-control" name="contrasena" id="contrasena" value="<?= isset($du) ? $du->contrasena : '' ?>" >
                 </div>
             </div>
 
@@ -148,46 +182,7 @@ if (!empty($_POST)) {
 </body>
 
 <footer class="py-4 text-light ">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-3">
-                <img src="./images/logo.png" class="footer-logo" alt="logo de la empresa">
-            </div>
-
-            <div class="col-md-3">
-                <h5>Información</h5>
-                <ul>
-                    <li class="py-1">Luis Andrés Barriosnuevos</li>
-                    <li class="py-1">Desarrollo Web</li>
-                    <li class="py-1">Programa de Ingeniería Industrial</li>
-                    <li class="py-1">Corporación Universitaria Iberoamericana</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Redes Sociales</h5>
-                <ul>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/whatsapp-icon.png" class="img-footer" alt="WhatsApp"> WhatsApp</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/instagram-icon.png" class="img-footer" alt="Instagram"> Instagram</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/facebook-icon.png" class="img-footer" alt="Facebook"> Facebook</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Links de Interés</h5>
-                <ul>
-                    <li class="py-1"><a href="https://www.ibero.edu.co/">IBERO</a></li>
-                    <li class="py-1"><a href="https://getbootstrap.com/">Bootstrap</a></li>
-                    <li class="py-1"><a href="index.php">Contáctanos</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?php include 'templates/footer.php'; ?>
 </footer>
 
 

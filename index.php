@@ -1,3 +1,9 @@
+<?php
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -53,37 +59,22 @@
         <!-- SECCIÓN N° 1 -->
         <section id="seccion1" class="seccion p-5 my-5">
           <h2>Optimización de Procesos: Impulsando la Eficiencia Operativa en la Consultoría de Ingeniería Industrial</h2>
+          
           <div class="row py-3">
-            <!-- Primera fila -->
-            <div class="col-md-4 py-3">
+            <div class="py-3 col-md-4">
+              <!-- Imagen 1 -->
+              <img src="./images/articulo1.png" class="img-fluid" alt="Imagen 1">  
+            </div>
+            
+            <div class="py-3 col-md-8">
               <!-- Primer texto -->
               <p>La optimización de procesos en la consultoría de ingeniería industrial es esencial para mejorar la eficiencia operativa. A través de análisis detallados, identificación de cuellos de botella y aplicación de tecnologías innovadoras, se logra maximizar la productividad, reducir costos y mejorar la calidad. Esta estrategia garantiza que las empresas obtengan resultados óptimos y se mantengan competitivas en el mercado.</p>
-            </div>
-            <div class="col-md-4 py-3">
-              <!-- Imagen -->
-              <img src="./images/articulo1.png" class="img-fluid" alt="Imagen 1">
-            </div>
-            <div class="col-md-4 py-3">
               <!-- Segundo texto -->
               <p>Un enfoque integral de optimización de procesos implica la evaluación exhaustiva de cada etapa, desde el diseño hasta la implementación. Herramientas analíticas avanzadas y metodologías probadas permiten identificar áreas de mejora, streamlinear flujos de trabajo y eliminar ineficiencias. La clave radica en la continua monitorización y ajuste para garantizar una mejora continua y adaptarse a las cambiantes demandas del mercado.</p>
+              <!--Tercer texto -->
+              <p>Además, la optimización de procesos fomenta una cultura de excelencia operativa dentro de las organizaciones. Al involucrar a los equipos en la identificación de oportunidades y la implementación de soluciones, se promueve un entorno de innovación y colaboración. Esto conduce a una mayor satisfacción del cliente, aumento de la rentabilidad y un posicionamiento más sólido en el sector de la ingeniería industrial.</p>
             </div>
           </div>
-          <!-- Segunda fila -->
-          <div class="row align-items-center">
-            <div class="col-md-4"><!-- Dejamos esta columna vacía -->
-            </div>
-            <div class="col-md-4"><!-- Aquí uso col-md-4 para que tenga el mismo ancho que la imagen -->
-              <div class="row align-items-center">
-                <div class="col">
-                  <p>Además, la optimización de procesos fomenta una cultura de excelencia operativa dentro de las organizaciones. Al involucrar a los equipos en la identificación de oportunidades y la implementación de soluciones, se promueve un entorno de innovación y colaboración. Esto conduce a una mayor satisfacción del cliente, aumento de la rentabilidad y un posicionamiento más sólido en el sector de la ingeniería industrial.</p>
-                  
-                  <button type="button" class="btn btn-success">Más Información</button>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
         </section>
       
         <!-- SECCIÓN N° 2 -->
@@ -191,46 +182,7 @@
 
 
 <footer class="py-4 text-light ">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-3">
-                <img src="./images/logo.png" class="footer-logo" alt="logo de la empresa">
-            </div>
-
-            <div class="col-md-3">
-                <h5>Información</h5>
-                <ul>
-                    <li class="py-1">Luis Andrés Barriosnuevos</li>
-                    <li class="py-1">Desarrollo Web</li>
-                    <li class="py-1">Programa de Ingeniería Industrial</li>
-                    <li class="py-1">Corporación Universitaria Iberoamericana</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Redes Sociales</h5>
-                <ul>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/whatsapp-icon.png" class="img-footer" alt="WhatsApp"> WhatsApp</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/instagram-icon.png" class="img-footer" alt="Instagram"> Instagram</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/facebook-icon.png" class="img-footer" alt="Facebook"> Facebook</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Links de Interés</h5>
-                <ul>
-                    <li class="py-1"><a href="https://www.ibero.edu.co/">IBERO</a></li>
-                    <li class="py-1"><a href="https://getbootstrap.com/">Bootstrap</a></li>
-                    <li class="py-1"><a href="index.php">Contáctanos</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?php include 'templates/footer.php'; ?>
 </footer>
 
 </html>

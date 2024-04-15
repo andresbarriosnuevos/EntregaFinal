@@ -1,5 +1,7 @@
 <?php
-include('usuario/usuario.php');
+if (!class_exists('Usuario')) {
+    include('./usuario/usuario.php');
+}
 //include('database.php');
 
 $mensaje = '';
@@ -12,9 +14,9 @@ $u = new Usuario();
 if (!empty($_GET)) {
 
     $id = $_GET['id'];
-    
     $remove = $u->delete($id);
-    header("Location: usuarios.php?mensaje=" . urlencode("Usuario Eliminado correctamente")); 
+    header("Location: usuarios.php?mensaje=" . urlencode("Usuario Eliminado correctamente"));
+   
 
 }
 

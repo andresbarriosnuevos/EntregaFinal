@@ -1,5 +1,7 @@
 <?php
-include('usuario/usuario.php');
+if (!class_exists('Usuario')) {
+    include('./usuario/usuario.php');
+}
 include_once('config/functions.php');
 
 
@@ -8,11 +10,11 @@ $mensaje = '';
 $u = new Usuario();
 
 $du = mysqli_fetch_object($u->getOne($_GET['id']));
-var_dump($_POST);
+//var_dump($_POST);
 
 if (!empty($_POST)) {
     $_POST['imagen'] = $du->imagen;
-    var_dump($_FILES);
+    //var_dump($_FILES);
     if ( $_FILES['imagen']['name'] !== '' ) {
         $_POST['imagen'] = saveImages($_FILES);
     }
@@ -56,12 +58,6 @@ if (!empty($_POST)) {
     <!-- Mostrar mensaje de error si existe -->
     <?php echo $mensaje; ?>
 
-    <!-- Mostrar el formulario si se encontró un usuario con el ID proporcionado -->
-    <?php 
-    //if(isset($du)) {
-    //    include 'templates/form.php';
-    //}
-    ?>
 
     <!-- Formulario -->
     <div class="container" style="background-color: whitesmoke; max-width: 800px;">
@@ -89,6 +85,13 @@ if (!empty($_POST)) {
                 <label for="inputUsuario" class="col-sm-2 col-form-label">Usuario</label>
                 <div class="col-sm-10">
                 <input type="text" class="form-control" name="usuario" id="usuario" value="<?= isset($du) ? $du->usuario : '' ?>" >
+                </div>
+            </div>
+
+            <div class="row mb-3" style="padding-left: 80px; padding-right: 80px;">
+                <label for="inputContrasena" class="col-sm-2 col-form-label">Contraseña</label>
+                <div class="col-sm-10">
+                <input type="password" class="form-control" name="contrasena" id="contrasena" value="<?= isset($du) ? $du->contrasena : '' ?>" >
                 </div>
             </div>
 
@@ -155,46 +158,7 @@ if (!empty($_POST)) {
 
 
 <footer class="py-4 text-light ">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-3">
-                <img src="./images/logo.png" class="footer-logo" alt="logo de la empresa">
-            </div>
-
-            <div class="col-md-3">
-                <h5>Información</h5>
-                <ul>
-                    <li class="py-1">Luis Andrés Barriosnuevos</li>
-                    <li class="py-1">Desarrollo Web</li>
-                    <li class="py-1">Programa de Ingeniería Industrial</li>
-                    <li class="py-1">Corporación Universitaria Iberoamericana</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Redes Sociales</h5>
-                <ul>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/whatsapp-icon.png" class="img-footer" alt="WhatsApp"> WhatsApp</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/instagram-icon.png" class="img-footer" alt="Instagram"> Instagram</a>
-                    </li>
-                    <li class="py-2">
-                        <a href="index.php"><img src="./images/facebook-icon.png" class="img-footer" alt="Facebook"> Facebook</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Links de Interés</h5>
-                <ul>
-                    <li class="py-1"><a href="https://www.ibero.edu.co/">IBERO</a></li>
-                    <li class="py-1"><a href="https://getbootstrap.com/">Bootstrap</a></li>
-                    <li class="py-1"><a href="index.php">Contáctanos</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?php include 'templates/footer.php'; ?>
 </footer>
 
 
